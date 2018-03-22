@@ -1,0 +1,74 @@
+<div id="example-wrapper">
+  <div class="div-box">
+    <div class="banner-subpage">
+      <figure><img src="../../assets/images/background/bg-banner.jpg" alt="bg-banner"/></figure>
+      <div class="banner-subpage-content">
+        <h2>Cart</h2>
+        <div class="desc">
+          <p>Shop </p>
+          <p>Cart</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="div-box mb mt">
+    <div class="container">
+      <form class="cart-form">
+        <table class="shopping-cart-table">
+          <tr>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Delete</th>
+          </tr>
+            <tr *ngFor="let item of cartItems" >
+              <td data-title="Product"><a href="#" class="image-product"><img src="{{item.product.image}}" alt="tab-1" width="180" height="220"/></a></td>
+              <td data-title="Name"><a href="#" class="name-product">{{item.product.name}} </a></td>
+              <td data-title="Price"><span class="price">${{item.product.price}}</span></td>
+              <td data-title="Quantity"><span class="quanlity"><a (click)="addProductToCart(item) "><i class="fa fa-plus-circle" aria-hidden="true"></i></a>Quantity:{{item.quantity}}<a (click)="removeProductFromCart(item)"><i class="fa fa-minus-circle" aria-hidden="true"></i></a></span>
+                <!--<input type="number" #value value="{{item.quantity}}" min="0" (click)="deleteProduct(item,item.quantity,value.value)"/>-->
+              </td>
+              <td data-title="Total"><span class="total">${{item.totalCost}}</span></td>
+              <td data-title="Remove"><a (click)="deleteProduct(item)"><i class="fa fa-times"></i></a></td>
+            </tr>
+
+          <!--<tr>-->
+            <!--<td data-title="Product"><a href="#" class="image-product"><img src="../../assets/images/demo/product-2.jpg" alt="tab-1" width="180" height="220"/></a></td>-->
+            <!--<td data-title="Name"><a href="#" class="name-product">Sicily Chair </a></td>-->
+            <!--<td data-title="Price"><span class="price">$799.00</span></td>-->
+            <!--<td data-title="Quantity"><span class="quanlity">Quantity:</span>-->
+              <!--<input type="number" value="1" min="0"/>-->
+            <!--</td>-->
+            <!--<td data-title="Total"><span class="total">$799.00</span></td>-->
+            <!--<td data-title="Remove"><i class="fa fa-times"></i></td>-->
+          <!--</tr>-->
+        </table>
+        <div class="button-cart">
+          <div class="button-cart-left">
+            <input type="text" placeholder="Coupon code"/><a (click)="emptyCart()" class="coupon">Empty Cart</a>
+          </div>
+          <div class="button-cart-right"><a href="#" class="update-cart">Update Cart</a><a href="#" class="process">Proceed to Checkout</a></div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-md-6">
+          <form class="cart-total">
+            <h4>Cart Totals</h4>
+            <table>
+              <tr>
+                <td>Subtotal</td>
+                <td><span class="subtotal">$<span class="text--red text--bold js-cart-total">{{(cart | async).grossTotal | currency:'GBP':true}}</span></span></td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td><span class="total">$<span class="text--red text--bold js-cart-total">{{(cart | async).grossTotal | currency:'GBP':true}}</span></span></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

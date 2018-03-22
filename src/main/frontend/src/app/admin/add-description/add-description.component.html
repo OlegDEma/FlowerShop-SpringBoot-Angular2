@@ -1,0 +1,46 @@
+<form *ngIf="!change" #myForm = "ngForm" (ngSubmit)="addProductDescription()"> <!-- myForms holds ref. to our ngForm -->
+  <table>
+    <tr>
+      <td>Description</td>
+      <td><input type="text" ngControl="description" [(ngModel)]="newProductDescription.description"  name="description" required/>{{newProductDescription.description}}</td>
+      <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+
+      <td style.colspan="2">
+        <button type="submit">Save Contact</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<form *ngIf="change" #myForm = "ngForm" (ngSubmit)="changeProductDescription()"> <!-- myForms holds ref. to our ngForm -->
+  <table>
+    <tr>
+      <td>Description</td>
+      <td><input type="text" ngControl="description" [(ngModel)]="bestProductDescription.description" placeholder="{{bestProductDescription.description}}" name="description" required/></td>
+      <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+
+      <td style.colspan="2">
+        <button type="submit">Change</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<table class="table-fill">
+  <thead>
+  <tr>
+    <th class="text-left">Id</th>
+    <th class="text-left">Description</th>
+    <th class="text-left">Delete</th>
+    <th class="text-left">Change</th>
+  </tr>
+  </thead>
+  <tbody class="table-hover">
+  <tr *ngFor="let description of productDescriptionArr">
+    <td class="text-left">{{description.id}}</td>
+    <td class="text-left">{{description.description}}</td>
+    <td class="text-left"><input placeholder="Delete" type="submit" value="Delete" (click)="deleteProductDescription(description.id)"/></td>
+    <td class="text-left"><input placeholder="Change" type="submit" value="Change" (click)="toggle(description)"/></td>
+
+  </tr>
+  </tbody>
+</table>

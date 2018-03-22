@@ -1,0 +1,53 @@
+<form *ngIf="!change" #myForm = "ngForm" (ngSubmit)="addDelivery()"> <!-- myForms holds ref. to our ngForm -->
+  <table>
+    <tr>
+      <td>Way</td>
+      <td><input type="text" ngControl="wayOfDelivery" [(ngModel)]="newDelivery.wayOfDelivery"  name="name" required/>{{newDelivery.wayOfDelivery}}</td>
+      <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+
+      <td>Firm</td>
+      <td><input type="text" ngControl="firmOfDelivery" [(ngModel)]="newDelivery.firmOfDelivery" name="surname" required/>{{newDelivery.firmOfDelivery}}</td>
+      <td style.colspan="2">
+        <button type="submit">Save Contact</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<form *ngIf="change" #myForm = "ngForm" (ngSubmit)="changeDelivery()"> <!-- myForms holds ref. to our ngForm -->
+  <table>
+    <tr>
+      <td>Way</td>
+      <td><input type="text" ngControl="wayOfDelivery" [(ngModel)]="bestDelivery.wayOfDelivery" placeholder="{{bestDelivery.wayOfDelivery}}" name="name" required/></td>
+      <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+
+      <td>Firm</td>
+      <td><input type="text" ngControl="firmOfDelivery" [(ngModel)]="bestDelivery.firmOfDelivery" placeholder="{{bestDelivery.firmOfDelivery}}" name="surname" required/></td>
+
+      <td style.colspan="2">
+        <button type="submit">Change</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<table class="table-fill">
+  <thead>
+  <tr>
+    <th class="text-left">Id</th>
+    <th class="text-left">Way</th>
+    <th class="text-left">Firm</th>
+    <th class="text-left">Delete</th>
+    <th class="text-left">Change</th>
+  </tr>
+  </thead>
+  <tbody class="table-hover">
+  <tr *ngFor="let delivery of deliveryArr">
+    <td class="text-left">{{delivery.id}}</td>
+    <td class="text-left">{{delivery.wayOfDelivery}}</td>
+    <td class="text-left">{{delivery.firmOfDelivery}}</td>
+    <td class="text-left"><input placeholder="Delete" type="submit" value="Delete" (click)="deleteDelivery(delivery.id)"/></td>
+    <td class="text-left"><input placeholder="Change" type="submit" value="Change" (click)="toggle(delivery)"/></td>
+
+  </tr>
+  </tbody>
+</table>

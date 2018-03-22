@@ -1,0 +1,94 @@
+<form *ngIf="!change" #myForm = "ngForm" (ngSubmit)="onManagerAdd()"> <!-- myForms holds ref. to our ngForm -->
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" ngControl="name" [(ngModel)]="newManager.name"  name="name" required/></td>
+            <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+
+            <td>Last Name</td>
+            <td><input type="text" ngControl="surname" [(ngModel)]="newManager.surname" name="surname" required/></td>
+
+            <td>Patronymic</td>
+            <td><input type="text" ngControl="patronymic" [(ngModel)]="newManager.patronymic" name="patronymic" required/></td>
+
+            <td>email address</td>
+            <td><input type="text"  ngControl="mail" [(ngModel)]="newManager.mail" name="mail"/></td>
+
+            <td>Phone</td>
+            <td><input type="text"  ngControl="phone" [(ngModel)]="newManager.phone" name="phone"/></td>
+
+            <td>City</td>
+            <td><input type="text"  ngControl="city" [(ngModel)]="newManager.city" name="city"/></td>
+
+            <td>Storage</td>
+            <td><input type="text"  ngControl="storage" [(ngModel)]="newManager.storage" name="storage"/></td>
+
+            <td style.colspan="2">
+                <button type="submit">Save Contact</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<form *ngIf="change" #myForm = "ngForm" (ngSubmit)="changeManager()"> <!-- myForms holds ref. to our ngForm -->
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" ngControl="name" [(ngModel)]="bestManager.name" placeholder="{{bestManager.name}}" name="name" required/></td>
+            <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+
+            <td>Last Name</td>
+            <td><input type="text" ngControl="surname" [(ngModel)]="bestManager.surname" placeholder="{{bestManager.surname}}" name="surname" required/></td>
+
+            <td>Patronymic</td>
+            <td><input type="text" ngControl="patronymic" [(ngModel)]="bestManager.patronymic" placeholder="{{bestManager.patronymic}}" name="patronymic" required/></td>
+
+            <td>email address</td>
+            <td><input type="text"  ngControl="mail" [(ngModel)]="bestManager.mail" placeholder="{{bestManager.mail}}" name="mail"/></td>
+
+            <td>Phone</td>
+            <td><input type="text"  ngControl="phone" [(ngModel)]="bestManager.phone" placeholder="{{bestManager.phone}}" name="phone"/></td>
+
+            <td>City</td>
+            <td><input type="text"  ngControl="city" [(ngModel)]="bestManager.city" placeholder="{{bestManager.city}}" name="city"/></td>
+
+            <td>Storage</td>
+            <td><input type="text"  ngControl="storage" [(ngModel)]="bestManager.storage" placeholder="{{bestManager.storage}}" name="storage"/></td>
+
+            <td style.colspan="2">
+                <button type="submit">Change</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<table class="table-fill">
+    <thead>
+    <tr>
+        <th class="text-left">Id</th>
+        <th class="text-left">Name</th>
+        <th class="text-left">Surname</th>
+        <th class="text-left">Patronymic</th>
+        <th class="text-left">Mail</th>
+        <th class="text-left">Phone</th>
+        <th class="text-left">City</th>
+        <th class="text-left">Storage</th>
+        <th class="text-left">Delete</th>
+        <th class="text-left">Change</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+    <tr *ngFor="let manager of managers">
+        <td class="text-left">{{manager.id}}</td>
+        <td class="text-left">{{manager.name}}</td>
+        <td class="text-left">{{manager.surname}}</td>
+        <td class="text-left">{{manager.patronymic}}</td>
+        <td class="text-left">{{manager.mail}}</td>
+        <td class="text-left">{{manager.phone}}</td>
+        <td class="text-left">{{manager.city}}</td>
+        <td class="text-left">{{manager.storage}}</td>
+        <td class="text-left"><input placeholder="Delete" type="submit" value="Delete" (click)="deleteManager(manager.id)"/></td>
+        <td class="text-left"><input placeholder="Change" type="submit" value="Change" (click)="toggle(manager)"/></td>
+
+    </tr>
+    </tbody>
+</table>

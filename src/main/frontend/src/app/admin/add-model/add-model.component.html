@@ -1,0 +1,45 @@
+<form *ngIf="!change" #myForm = "ngForm" (ngSubmit)="addModel()"> <!-- myForms holds ref. to our ngForm -->
+  <table>
+    <tr>
+      <td>Name</td>
+      <td><input type="text" ngControl="name" [(ngModel)]="newModel.name"  name="name" required/>{{newModel.name}}</td>
+      <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+<td>
+      <button type="submit">Save Contact</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<form *ngIf="change" #myForm = "ngForm" (ngSubmit)="changeModel()"> <!-- myForms holds ref. to our ngForm -->
+  <table>
+    <tr>
+      <td>Name</td>
+      <td><input type="text" ngControl="name" [(ngModel)]="bestModel.name" placeholder="{{bestModel.name}}" name="name" required/></td>
+      <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+
+      <td style.colspan="2">
+        <button type="submit">Change</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<table class="table-fill">
+  <thead>
+  <tr>
+    <th class="text-left">Id</th>
+    <th class="text-left">Name</th>
+    <th class="text-left">Delete</th>
+    <th class="text-left">Change</th>
+  </tr>
+  </thead>
+  <tbody class="table-hover">
+  <tr *ngFor="let model of modelArr">
+    <td class="text-left">{{model.id}}</td>
+    <td class="text-left">{{model.name}}</td>
+    <td class="text-left"><input placeholder="Delete" type="submit" value="Delete" (click)="deleteModel(model.id)"/></td>
+    <td class="text-left"><input placeholder="Change" type="submit" value="Change" (click)="toggle(model)"/></td>
+
+  </tr>
+  </tbody>
+</table>

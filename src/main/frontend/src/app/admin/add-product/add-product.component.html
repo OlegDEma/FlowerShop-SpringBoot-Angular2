@@ -1,0 +1,137 @@
+<!--<button (click)="saveProduct()">Save</button>-->
+<!--<input type="file" (change)="updated($event);">-->
+<input type="file" (change)="updated($event);">
+<!--<input type="file" class="form-control" (change)="newFileSave()" [(ngModel)]="newFile">-->
+<!--<file-upload #fu (change)="fu.upload()" [multiple]="true"></file-upload>-->
+<!--<form method="POST" enctype="multipart/form-data" action="./api/tasks/saveImageForProduct">-->
+    <!--<table>-->
+        <!--<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>-->
+        <!--<tr><td></td><td><input type="submit" value="Upload" /></td></tr>-->
+    <!--</table>-->
+<!--</form>-->
+<div *ngIf="loading" class="container col-xs-12">
+<form *ngIf="!change" #myForm = "ngForm" (ngSubmit)="onProductAdd()"> <!-- myForms holds ref. to our ngForm -->
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input [(ngModel)]="newProduct.name"  name="first" /></td>
+            <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+
+
+            <td>Quarantee</td>
+            <td><input type="number" ngControl="guarantee" [(ngModel)]="newProduct.guarantee" name="guarantee" required/></td>
+
+            <td>Image</td>
+            <input type="file" (change)="updated($event)">
+
+            <td>Price</td>
+            <td><input [(ngModel)]="newProduct.price" name="price"/></td>
+
+            <td>Brand</td>
+            <td><select [(ngModel)]="newProduct.brand" name="brand">
+                    <option *ngFor="let brand of brands" [ngValue]="brand">{{brand.name}}</option>
+                </select></td>
+
+            <td>Category</td>
+            <td><select [(ngModel)]="newProduct.category" name="category">
+                <option *ngFor="let category of categorys" [ngValue]="category">{{category.name}}</option>
+            </select></td>
+
+            <td>Manager</td>
+            <td><select [(ngModel)]="newProduct.manager" name="manager">
+                <option *ngFor="let manager of managers" [ngValue]="manager">{{manager.name}}</option>
+            </select></td>
+
+            <td>Model</td>
+            <td><select [(ngModel)]="newProduct.model" name="model">
+                <option *ngFor="let model of models" [ngValue]="model">{{model.name}}</option>
+            </select></td>
+
+            <td>Description</td>
+            <td><select [(ngModel)]="newProduct.description" name="description">
+                <option *ngFor="let description of descriptions" [ngValue]="description">{{description.description}}</option>
+            </select></td>
+
+
+        </tr>
+        <tr><td style.colspan="2">
+            <button type="submit">Save Contact</button>
+        </td></tr>
+    </table>
+</form>
+<form *ngIf="change" #myForm = "ngForm" (ngSubmit)="changeProduct()"> <!-- myForms holds ref. to our ngForm -->
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" ngControl="name" [(ngModel)]="bestProduct.name" placeholder="{{bestProduct.name}}" name="name" required/></td>
+            <!-- adding ngControl , will add that textBox to ngForm and it will participate in ngForm -->
+
+            <td>Price</td>
+            <td><input type="text" ngControl="price" [(ngModel)]="bestProduct.price" placeholder="{{bestProduct.price}}" name="price" required/></td>
+
+            <!--<td>Patronymic</td>-->
+            <!--<td><input type="text" ngControl="patronymic" [(ngModel)]="bestProduct.patronymic" placeholder="{{bestProduct.patronymic}}" name="patronymic" required/></td>-->
+
+            <!--<td>email address</td>-->
+            <!--<td><input type="text"  ngControl="mail" [(ngModel)]="bestProduct.mail" placeholder="{{bestProduct.mail}}" name="mail"/></td>-->
+
+            <!--<td>Phone</td>-->
+            <!--<td><input type="text"  ngControl="phone" [(ngModel)]="bestProduct.phone" placeholder="{{bestProduct.phone}}" name="phone"/></td>-->
+
+            <!--<td>City</td>-->
+            <!--<td><input type="text"  ngControl="city" [(ngModel)]="bestProduct.city" placeholder="{{bestProduct.city}}" name="city"/></td>-->
+
+            <!--<td>Storage</td>-->
+            <!--<td><input type="text"  ngControl="storage" [(ngModel)]="bestProduct.storage" placeholder="{{bestProduct.storage}}" name="storage"/></td>-->
+
+            <td style.colspan="2">
+                <button type="submit">Change</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<table class="table-fill">
+    <thead>
+    <tr>
+        <th class="text-left">Id</th>
+        <th class="text-left">Name</th>
+        <th class="text-left">Quarantee</th>
+        <th class="text-left">Image</th>
+        <th class="text-left">Price</th>
+        <th class="text-left">Brand</th>
+        <th class="text-left">Category</th>
+        <th class="text-left">Manager</th>
+        <th class="text-left">Model</th>
+        <th class="text-left">Descr</th>
+        <th class="text-left">Change</th>
+        <th class="text-left">Delete</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+    <tr *ngFor="let product of products">
+        <td class="text-left">{{product.id}}</td>
+        <td class="text-left">{{product.name}}</td>
+        <td class="text-left">{{product.guarantee}}</td>
+        <td class="text-left">{{product.image}}</td>
+        <td class="text-left">{{product.price}}</td>
+        <td class="text-left">{{product.brand.name}}</td>
+        <td class="text-left">{{product.category.name}}</td>
+        <td class="text-left">{{product.manager.name}}</td>
+        <td class="text-left">{{product.model.name}}</td>
+        <td class="text-left">{{product.description.description}}</td>
+        <td class="text-left"><input placeholder="Delete" type="submit" value="Delete" (click)="deleteProduct(product.id)"/></td>
+        <td class="text-left"><input placeholder="Change" type="submit" value="Change" (click)="toggle(product)"/></td>
+
+    </tr>
+    </tbody>
+</table>
+</div>
+<!--<img src="../../../assets/images/products/125701-930x250.jpg">-->
+<div *ngFor="let product of products">
+<img src="{{product.image}}" alt="{{product.name}}"  width="375" height="450" class="attachment-shop_catalog size-shop_catalog wp-post-image"/>
+</div>
+
+<!--<div *ngFor="let product of products">-->
+    <!--<img src="{{product.image}}">{{product.image}}-->
+<!--</div>-->

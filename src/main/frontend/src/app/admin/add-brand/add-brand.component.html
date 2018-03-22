@@ -1,0 +1,30 @@
+<p>Brand</p>        <input type="text" placeholder="Brand" (keyup.enter)="onBrandAdd($event)"
+                           [(ngModel)]="addBrandValue"/>{{addBrandValue}}
+<div *ngIf="enableChange">
+    <p>Brand</p>        <input type="text" placeholder="Change" (keyup.enter)="changeBrand()"
+                               [(ngModel)]="newName"/>
+</div>
+<div class="table-title">
+    <h3>Brands Table</h3>
+</div>
+<table class="table-fill">
+    <thead>
+    <tr>
+        <th class="text-left">Id</th>
+        <th class="text-left">Name</th>
+        <th class="text-left">Delete</th>
+        <th class="text-left">Change</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+    <tr *ngFor="let brand of brands">
+        <td class="text-left">{{brand.id}}</td>
+        <td class="text-left">{{brand.name}}</td>
+        <td class="text-left"><input placeholder="Delete" type="submit" value="Delete" (click)="deleteBrand(brand.id)"/></td>
+        <td class="text-left"><input placeholder="Change" type="submit" value="Change" (click)="toggle(brand.id)"/></td>
+
+    </tr>
+    </tbody>
+</table>
+
+<input (click)="example()" value="Example">
