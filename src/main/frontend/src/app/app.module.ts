@@ -5,10 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
-import {TasksComponent} from './tasks/tasks.component';
-import {TasksListComponent} from './tasks/tasks-list/tasks-list.component';
 import {TaskService} from "./services/task.service";
-import {TasksAddComponent} from './tasks/tasks-add/tasks-add.component';
 import {HeaderComponent} from './header/header.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
@@ -36,9 +33,6 @@ import {LoginComponent} from "./login";
 @NgModule({
   declarations: [
     AppComponent,
-    TasksComponent,
-    TasksListComponent,
-    TasksAddComponent,
     HeaderComponent,
     HomePageComponent,
     ErrorPageComponent,

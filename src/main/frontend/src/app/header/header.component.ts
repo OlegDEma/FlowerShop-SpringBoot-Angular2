@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ShoppingCart} from "../model/shopping-cart.model";
 import {Observable} from "rxjs/Observable";
 import {TaskService} from "../services/task.service";
@@ -20,7 +20,10 @@ interface ICartItemWithProduct extends CartItem {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,OnChanges {
+    ngOnChanges(changes: SimpleChanges): void {
+
+    }
 
     public cart: Observable<ShoppingCart>;
     public cartItems: ICartItemWithProduct[];
@@ -28,6 +31,7 @@ export class HeaderComponent implements OnInit {
     private products: Product[];
     private cartSubscription: Subscription;
     currentUser:User ;
+    username:string = '';
     auth:boolean = false;
 
 
@@ -36,13 +40,22 @@ export class HeaderComponent implements OnInit {
     }
 
     public ngOnInit(): void {
+
+        this.authenticationService.onLogIn
+            .subscribe(data =>{
+                this.auth = true;
+            });
+
         this.cart = this.shoppingCartService.get();
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if(this.currentUser != null){
+            this.username = this.currentUser.username;
             this.auth = true;
         }else{
+            this.username = '';
             this.auth = false;
         }
+
 
         this.cartSubscription = this.cart.subscribe((cart) => {
             this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
@@ -60,15 +73,22 @@ export class HeaderComponent implements OnInit {
         });
     }
 
-    logOut() {
-        this.authenticationService.logOut()
-            .subscribe(
-                data => {
-                    this.router.navigate(['/auth']);
-                },
-                error => {
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate(['/']);
+        this.auth = false;
 
-                });
     }
+
+    // logout() {
+    //     this.authenticationService.logout()
+    //         .subscribe(
+    //             data => {
+    //                 this.router.navigate(['/auth']);
+    //             },
+    //             error => {
+    //
+    //             });
+    // }
 
 }

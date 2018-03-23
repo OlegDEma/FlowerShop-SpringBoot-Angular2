@@ -13,9 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
-public class HomeController {
+public class TaskController {
 
-    private final Logger log = LoggerFactory.getLogger(HomeController.class);
+    private final Logger log = LoggerFactory.getLogger(TaskController.class);
     private ProductService productService;
     private BrandService brandService;
     private ManagerService managerService;
@@ -26,7 +26,7 @@ public class HomeController {
     private ProductDescriptionService productDescriptionService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public HomeController( ProductService productService, BrandService brandService, ManagerService managerService, CategoryService categoryService, DeliveryService deliveryService, ModelService modelService, ProductDescriptionService productDescriptionService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public TaskController(ProductService productService, BrandService brandService, ManagerService managerService, CategoryService categoryService, DeliveryService deliveryService, ModelService modelService, ProductDescriptionService productDescriptionService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.productService = productService;
         this.brandService = brandService;
         this.managerService = managerService;
@@ -116,9 +116,6 @@ public class HomeController {
 
     @GetMapping("/brandList")
     public List<Brand> brandList(){
-        User user = userService.findOne(1);
-        user.setPassword("d09111997");
-        this.userService.addUser(user);
         return brandService.findAll();
     }
 

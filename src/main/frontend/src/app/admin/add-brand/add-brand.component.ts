@@ -28,21 +28,17 @@ export class AddBrandComponent implements OnInit {
   constructor(
       private taskService:TaskService,
     private route: ActivatedRoute,
-    // private preloadStrategy: SelectivePreloadingStrategy
   ) {
-    // this.modules = preloadStrategy.preloadedModules;
   }
 
   ngOnInit() {
-    // Capture the session ID if available
-    this.sessionId = this.route
-      .queryParamMap
-      .map(params => params.get('session_id') || 'None');
-
-    // Capture the fragment if available
-    this.token = this.route
-      .fragment
-      .map(fragment => fragment || 'None');
+    // this.sessionId = this.route
+    //   .queryParamMap
+    //   .map(params => params.get('session_id') || 'None');
+    //
+    // this.token = this.route
+    //   .fragment
+    //   .map(fragment => fragment || 'None');
 
      this.taskService.getBrands()
          .subscribe(

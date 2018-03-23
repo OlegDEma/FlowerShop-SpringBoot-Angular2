@@ -12,10 +12,10 @@
           </div>
           <div class="top-sidebar top-bar-right col-md-8">
             <aside id="text-6" class="widget widget_text">
-              <div class="textwidget"><i class="fa fa-home"></i> 69 North Cleveland, Memphis <i style="margin-left: 15px" class="fa fa-phone"></i> + 46 234-623-213<i style="margin-left: 15px" class="fa fa-clock-o"></i>{{currentUser.username}}</div>
+              <div class="textwidget"><i class="fa fa-home"></i> 69 North Cleveland, Memphis <i style="margin-left: 15px" class="fa fa-phone"></i> + 46 234-623-213<i style="margin-left: 15px" class="fa fa-clock-o"></i><span *ngIf="auth">{{username}}</span></div>
             </aside>
           </div>
-          <div><a *ngIf="!auth" routerLink="/auth">Login</a><a *ngIf="auth"  (click)="logOut()">Logout</a></div>
+          <div><a *ngIf="!auth" routerLink="/auth">Login</a><a *ngIf="auth"  (click)="logout()">Logout</a></div>
         </div>
       </div>
     </div>
@@ -200,7 +200,7 @@
                     <li><a href="service-detail.html">Service Details</a></li>
                   </ul>
                 </li>
-                <li class="menu-item menu-project"><a href="/reg">Auth</a>
+                <li *ngIf="!auth" class="menu-item menu-project"><a href="/reg">Auth</a>
                   <ul class="sub-menu">
                     <li class="menu_style_dropdown menu-item"><a href="#">Classic layout</a>
                       <ul class="sub-menu">
@@ -263,7 +263,7 @@
                     </li>
                   </ul>
                 </li>
-                <li class="menu-item menu-blog"><a routerLink="/admin">Admin Page</a>
+                <li *ngIf="auth" class="menu-item menu-blog"><a routerLink="/admin">Admin Page</a>
                   <ul class="sub-menu">
                     <li><a href="blog-masonry.html">Blog Masonry</a></li>
                     <li><a href="blog-2-columns-with-sidebar.html">Blog 2 Columns with Sidebar</a></li>

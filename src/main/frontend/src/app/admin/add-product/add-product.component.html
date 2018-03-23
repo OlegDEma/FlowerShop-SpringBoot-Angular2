@@ -1,14 +1,4 @@
-<!--<button (click)="saveProduct()">Save</button>-->
-<!--<input type="file" (change)="updated($event);">-->
-<input type="file" (change)="updated($event);">
-<!--<input type="file" class="form-control" (change)="newFileSave()" [(ngModel)]="newFile">-->
-<!--<file-upload #fu (change)="fu.upload()" [multiple]="true"></file-upload>-->
-<!--<form method="POST" enctype="multipart/form-data" action="./api/tasks/saveImageForProduct">-->
-    <!--<table>-->
-        <!--<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>-->
-        <!--<tr><td></td><td><input type="submit" value="Upload" /></td></tr>-->
-    <!--</table>-->
-<!--</form>-->
+
 <div *ngIf="loading" class="container col-xs-12">
 <form *ngIf="!change" #myForm = "ngForm" (ngSubmit)="onProductAdd()"> <!-- myForms holds ref. to our ngForm -->
     <table>

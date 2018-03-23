@@ -27,8 +27,8 @@
               <td data-title="Product"><a href="#" class="image-product"><img src="{{item.product.image}}" alt="tab-1" width="180" height="220"/></a></td>
               <td data-title="Name"><a href="#" class="name-product">{{item.product.name}} </a></td>
               <td data-title="Price"><span class="price">${{item.product.price}}</span></td>
-              <td data-title="Quantity"><span class="quanlity"><a (click)="addProductToCart(item) "><i class="fa fa-plus-circle" aria-hidden="true"></i></a>Quantity:{{item.quantity}}<a (click)="removeProductFromCart(item)"><i class="fa fa-minus-circle" aria-hidden="true"></i></a></span>
-                <!--<input type="number" #value value="{{item.quantity}}" min="0" (click)="deleteProduct(item,item.quantity,value.value)"/>-->
+              <td data-title="Quantity"><span class="quanlity"><a (click)="removeProductFromCart(item)"><i class="fa fa-minus-circle" aria-hidden="true"></i></a>Quantity:{{item.quantity}}<a (click)="addProductToCart(item) "><i class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
+
               </td>
               <td data-title="Total"><span class="total">${{item.totalCost}}</span></td>
               <td data-title="Remove"><a (click)="deleteProduct(item)"><i class="fa fa-times"></i></a></td>

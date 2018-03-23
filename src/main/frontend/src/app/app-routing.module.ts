@@ -10,6 +10,7 @@ import {ErrorPageComponent} from "./error-page/error-page.component";
 import {ProductShopPageComponent} from "./product-shop-page/product-shop-page.component";
 import {RegisterComponent} from "./registration/register.component";
 import {LoginComponent} from "./login";
+import {HeaderComponent} from "./header/header.component";
 
 
 const appRoutes: Routes = [
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     {path:'shop', component: ProductShopPageComponent},
     {path:'reg', component: RegisterComponent},
     {path:'auth', component: LoginComponent},
+    {path:'header', component: HeaderComponent},
     // {path:'auth', component: AuthComponent},
 
 ];
