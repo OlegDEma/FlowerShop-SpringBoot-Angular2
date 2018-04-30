@@ -19,20 +19,18 @@ export class ProductShopPageComponent implements OnInit {
     products : Product[] = [];
 
 
-    // array of all items to be paged
     private allItems: any[];
 
-    // pager object
+
     pager: any = {};
 
-    // paged items
     pagedItems: any[];
 
     copyPagedItems: any[];
 
     itemsProduct:Product[];
 
-    key: string = 'id'; //set default
+    key: string = 'id';
     reverse: boolean = false;
 
     p: number = 1;
@@ -54,7 +52,6 @@ export class ProductShopPageComponent implements OnInit {
                   this.copyPagedItems = products;
                   this.itemsProduct = products;
                   console.log(this.allItems);
-                  // initialize to page 1
                   // this.setPage(1);
               }
           );

@@ -73,6 +73,11 @@ export class HeaderComponent implements OnInit,OnChanges {
         });
     }
 
+    getDota(){
+        console.log("DONE")
+        console.log(this.taskService.getDota());
+    }
+
     logout() {
         this.authenticationService.logout();
         this.router.navigate(['/']);

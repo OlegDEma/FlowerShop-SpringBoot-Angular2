@@ -30,6 +30,15 @@ export class TaskService {
     }
 
 
+    getDota(){
+        return this.http.get('https://api.opendota.com/api/heroes')
+        .map(
+            (response: Response) => {
+                return response.json();
+            }
+        );
+    }
+
     addProductCart(product: Product) {
 
         this.cart.push(product);

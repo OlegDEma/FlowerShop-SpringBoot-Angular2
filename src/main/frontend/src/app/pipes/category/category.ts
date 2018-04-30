@@ -1,8 +1,5 @@
 import {OnInit, Pipe, PipeTransform} from '@angular/core';
-import {ProductShopPageComponent} from "../../product-shop-page/product-shop-page.component";
-import {TaskService} from "../../services/task.service";
-import {Category} from "../../model/Category";
-import {forEach} from "@angular/router/src/utils/collection";
+
 @Pipe({
     name: 'category',
     pure:false

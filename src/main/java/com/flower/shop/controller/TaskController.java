@@ -122,8 +122,9 @@ public class TaskController {
 
     @GetMapping("/deleteBrand/{id}")
     public Brand deleteBrand(@PathVariable int id){
+        Brand brand = brandService.findOne(id);
         brandService.removeById(id);
-        return brandService.findOne(id);
+        return brand;
     }
 
     @GetMapping("/deleteProduct/{id}")
