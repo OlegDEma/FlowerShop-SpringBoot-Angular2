@@ -71,7 +71,6 @@ public class ProductServiceImpl implements ProductService {
 
         }
         try {
-            // Get the file and save it somewhere
             byte[] bytes = multipartFile.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + multipartFile.getOriginalFilename());
             Path write = Files.write(path, bytes);
@@ -80,70 +79,6 @@ public class ProductServiceImpl implements ProductService {
             e.printStackTrace();
         }
 
-//        String path = System.getProperty("catalina.home") + "/resources/" + product.getName() + "/"
-//                + multipartFile.getOriginalFilename();
-//
-//        product.setImage("resources/" + product.getName() + "/" + multipartFile.getOriginalFilename());
-//
-//        File file = new File(path);
-//
-//        try {
-//            file.mkdirs();
-//            try {
-//                FileUtils.cleanDirectory(
-//                        new File(System.getProperty("catalina.home") + "/resources/" + product.getName() + "/"));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            multipartFile.transferTo(file);
-//        } catch (IOException e) {
-//            System.out.println("error with file");
-//        }
     }
 
-//    public void saveImageForProduct( int id , MultipartFile multipartFile) {
-//
-//        String UPLOADED_FOLDER = "E://temp//";
-//
-//        Product product = productRepository.findOne(id);
-//
-//        if (multipartFile.isEmpty()) {
-//
-//        }
-//
-//
-//        try {
-//
-//            // Get the file and save it somewhere
-//            byte[] bytes = multipartFile.getBytes();
-//            Path path = Paths.get(UPLOADED_FOLDER + multipartFile.getOriginalFilename());
-//            Path write = Files.write(path, bytes);
-//
-//            product.setImage(UPLOADED_FOLDER + multipartFile.getOriginalFilename());
-//
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-////        String path = System.getProperty("catalina.home") + "/resources/" + product.getName() + "/"
-////                + multipartFile.getOriginalFilename();
-////
-////        product.setImage("resources/" + product.getName() + "/" + multipartFile.getOriginalFilename());
-////
-////        File file = new File(path);
-////
-////        try {
-////            file.mkdirs();
-////            try {
-////                FileUtils.cleanDirectory(
-////                        new File(System.getProperty("catalina.home") + "/resources/" + product.getName() + "/"));
-////            } catch (IOException e) {
-////                e.printStackTrace();
-////            }
-////            multipartFile.transferTo(file);
-////        } catch (IOException e) {
-////            System.out.println("error with file");
-////        }
-//    }
 }

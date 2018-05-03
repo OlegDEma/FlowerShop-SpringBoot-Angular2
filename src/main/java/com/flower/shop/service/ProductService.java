@@ -28,7 +28,5 @@ public interface ProductService {
 
      Page<Product> findAllPageble(Pageable pageable);
 
-//    void saveImageForProduct( int id , MultipartFile multipartFile);
-
     void saveImage(MultipartFile multipartFile);
 }
