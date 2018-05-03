@@ -17,7 +17,7 @@ public class TaskController {
     private UserService userService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public TaskController(  BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public TaskController(BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -27,11 +27,6 @@ public class TaskController {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userService.addUser(user);
     }
-
-
-
-
-
 
 
     @GetMapping("/principal")
